@@ -1,0 +1,6 @@
+appsettings.private.json
+bin/
+obj/
+Debug/
+Release/
+.vs/
