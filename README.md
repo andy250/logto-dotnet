@@ -1,2 +1,2 @@
 # logto-dotnet
-LogTo API wrapper for .net
+LogTo Management API wrapper for .net
