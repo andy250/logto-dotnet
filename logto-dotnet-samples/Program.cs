@@ -14,7 +14,7 @@ var c = new LogToClient(new LogToConfig
     AppId = logToConfig.GetValue<string>("AppId")!,
     AppSecret = logToConfig.GetValue<string>("AppSecret")!,
     ManagementApi = logToConfig.GetValue<string>("ManagementApi")!,
-    ManagementApiScope = logToConfig.GetValue<string>("ManagementApiScope")!,
+    ManagementApiScope = logToConfig.GetValue<string>("ManagementApiScope"),
     BaseUrl = logToConfig.GetValue<string>("BaseUrl")!
 });
 
