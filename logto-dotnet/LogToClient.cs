@@ -22,8 +22,8 @@ namespace andy250.LogToDotnet
 
         public async Task<List<dynamic>> GetApplications(CancellationToken cancel = default)
         {
-            var request = new RestRequest($"applications");
-            return await this.client.GetAsync<List<dynamic>>(request, cancel);
+            var request = new RestRequest(Endpoints.Applications);
+            return (await this.client.GetAsync<List<dynamic>>(request, cancel))!;
         }
 
         public async Task<User?> GetUserById(string id, CancellationToken cancel = default)
@@ -33,7 +33,7 @@ namespace andy250.LogToDotnet
                 throw new ArgumentNullException(nameof(id));
             }
 
-            var request = new RestRequest($"users/{id}");
+            var request = new RestRequest(Endpoints.User(id));
             return await this.client.GetAsync<User>(request, cancel);
         }
 

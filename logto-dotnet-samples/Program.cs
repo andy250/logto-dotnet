@@ -7,15 +7,11 @@ IConfigurationRoot config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.private.json", optional: true)
     .Build();
 
-var logToConfig = config.GetSection("LogTo");
+var logToConfig = new LogToConfig();
+config.GetSection("LogTo").Bind(logToConfig);
 
-var c = new LogToClient(new LogToConfig
-{
-    AppId = logToConfig.GetValue<string>("AppId")!,
-    AppSecret = logToConfig.GetValue<string>("AppSecret")!,
-    ManagementApi = logToConfig.GetValue<string>("ManagementApi")!,
-    ManagementApiScope = logToConfig.GetValue<string>("ManagementApiScope"),
-    BaseUrl = logToConfig.GetValue<string>("BaseUrl")!
-});
+var c = new LogToClient(logToConfig);
 
-var user = await c.GetUserById(logToConfig.GetValue<string>("FetchUserId")!);
+var user = await c.GetUserById(config["FetchUserId"]!);
+Console.WriteLine($"id={user?.Id} email={user?.PrimaryEmail}");
+Console.ReadLine();

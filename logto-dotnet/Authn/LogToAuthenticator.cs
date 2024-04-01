@@ -20,8 +20,8 @@ namespace andy250.LogToDotnet.Authn
             baseUrl = config.BaseUrl;
             username = config.AppId;
             password = config.AppSecret;
-            resource = config.ManagementApi;
-            scope = config.ManagementApiScope;
+            resource = config.ApiId;
+            scope = config.ApiScope;
         }
 
         protected override async ValueTask<Parameter> GetAuthenticationParameter(string accessToken)
